@@ -1,0 +1,36 @@
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <div class="avatar-wrap">
+              <img *ngIf="avatar" src="{{avatar}} " alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+              <div *ngIf="!avatar" alt="avatar" class="rounded-circle img-fluid empty-avatar"></div>
+            </div>
+            <h5 class="my-3">{{username}}</h5>
+            <p class="text-muted mb-1">{{email}}</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <ng-container *ngIf="posts && posts.length">
+              <div *ngFor="let post of posts" class="post">
+                <div class="d-flex flex-row">
+                  <div class="heading"><b>{{post.heading}}</b></div>
+                  <div class="post-edit" (click)="editPost(post)">✏️</div>
+                </div>
+                <div class="row">
+                  <div class="text">{{post.text}}</div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

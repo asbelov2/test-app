@@ -1,0 +1,39 @@
+<div class="container">
+  <form novalidate class="form-signup w-100 m-auto">
+    <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+    <div class="inputs">
+      <div class="form-floating">
+        <input type="email" name="email" class="form-control" [(ngModel)]="user!.email" #emailV="ngModel"
+          placeholder="name@example.com" required
+          pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$">
+        <label for="floatingInput">Email address</label>
+        <div [hidden]="emailV.valid || emailV.untouched" class="alert alert-danger">
+          Incorrect email
+        </div>
+      </div>
+      <div class="form-floating">
+        <input type="text" name="name" class="form-control" [(ngModel)]="user!.username" placeholder="Username"
+          minlength="2" maxlength="40" #nameV="ngModel" required>
+        <label for="floatingInput">Username</label>
+      </div>
+      <div [hidden]="nameV.valid || nameV.untouched" class="alert alert-danger">
+        Incorrect name
+      </div>
+      <div class="form-floating">
+        <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Password"
+          minlength="6" maxlength="20">
+        <label for="floatingPassword">Password</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" name="paswordconfirm" class="form-control" [(ngModel)]="passwordConfirm" minlength="6"
+          maxlength="20" placeholder="Confirm Password">
+        <label for="floatingPassword">Confirm Password</label>
+      </div>
+      <div [hidden]="passwordValidation" class="alert alert-danger">
+        Incorrect password
+      </div>
+    </div>
+    <button [disabled]="nameV.invalid || emailV.invalid || !passwordValidation" class="w-100 btn btn-lg btn-primary"
+      type="submit" (click)="register($event)">Sign in</button>
+  </form>
+</div>

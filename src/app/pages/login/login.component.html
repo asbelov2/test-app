@@ -1,0 +1,26 @@
+<div class="container">
+  <form novalidate class="form-signin w-100 m-auto">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating">
+      <input type="email" class="form-control" name="email" [(ngModel)]="email" #emailV="ngModel"
+        placeholder="name@example.com" required
+        pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" />
+      <label for="floatingInput">Email address</label>
+      <div [hidden]="emailV.valid || emailV.untouched" class="alert alert-danger">
+        Incorrect email
+      </div>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" name="password" [(ngModel)]="password" #passwordV="ngModel"
+        placeholder="Password" minlength="6" maxlength="40" required>
+      <label for="floatingPassword">Password</label>
+      <div [hidden]="passwordV.valid || passwordV.untouched" class="alert alert-danger">
+        Incorrect password
+      </div>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="login($event)">Sign in</button>
+  </form>
+  <button [disabled]="emailV.invalid || passwordV.invalid" class="g_id_signin" (click)="handleLoginClick()">Login via
+    google</button>
+</div>
