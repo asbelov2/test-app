@@ -21,7 +21,7 @@ export class UserPageComponent {
     this.avatar = userService.avatar
   }
   ngOnInit() {
-    this.http.get(`http://185.26.53.195:5058/api/Post/GetPostByUserEmail?email=${this.email}`).subscribe(next => {
+    this.http.get(`https://localhost:5058/api/Post/GetPostByUserEmail?email=${this.email}`).subscribe(next => {
       this.posts = next as Post[]
     })
   }

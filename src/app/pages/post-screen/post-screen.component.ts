@@ -16,7 +16,7 @@ export class PostScreenComponent {
     activatedRoute.params.subscribe(next => {
       if ((next as any)?.id) {
         this.isNewPost = false
-        this.http.get(`http://185.26.53.195:5058/api/Post/${(next as any).id}`).subscribe(next => {
+        this.http.get(`https://localhost:5058/api/Post/${(next as any).id}`).subscribe(next => {
           this.post = next as Post
         })
       } else {
@@ -33,9 +33,9 @@ export class PostScreenComponent {
         'Access-Control-Allow-Origin': '*',
       })
     }
-    this.http.get(`http://185.26.53.195:5058/api/user/CheckEmail?email=${this.userService.email}`).subscribe(next => {
+    this.http.get(`https://localhost:5058/api/user/CheckEmail?email=${this.userService.email}`).subscribe(next => {
       this.post.userId = (next as any).id
-      this.http.post('http://185.26.53.195:5058/api/Post/', this.post, httpOptions).subscribe((next) => {
+      this.http.post('https://localhost:5058/api/Post/', this.post, httpOptions).subscribe((next) => {
         this.router.navigateByUrl('/profile')
       })
     })
@@ -48,9 +48,9 @@ export class PostScreenComponent {
         'Access-Control-Allow-Origin': '*',
       })
     }
-    this.http.get(`http://185.26.53.195:5058/api/user/CheckEmail?email=${this.userService.email}`).subscribe(next => {
+    this.http.get(`https://localhost:5058/api/user/CheckEmail?email=${this.userService.email}`).subscribe(next => {
       this.post.userId = (next as any).id
-      this.http.put(`http://185.26.53.195:5058/api/Post/${this.post.id}`, this.post, httpOptions).subscribe((next) => {
+      this.http.put(`https://localhost:5058/api/Post/${this.post.id}`, this.post, httpOptions).subscribe((next) => {
         this.router.navigateByUrl('/profile')
       })
     })
