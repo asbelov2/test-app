@@ -1,6 +1,14 @@
 .form-signin {
+  display: flex;
+  flex-direction: column;
   max-width: 330px;
   padding: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-floating {
+  width: 100%;
 }
 
 .form-signin .form-floating:focus-within {
@@ -8,6 +16,7 @@
 }
 
 .form-signin input[type="email"] {
+  width: 100%;
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -17,4 +26,27 @@
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.google-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid rgba($color: #000000, $alpha: 0.4);
+  box-shadow: 1px 1px rgba($color: #000000, $alpha: 0.4);
+  border-radius: 5px;
+}
+
+.google-button-wrap {
+  width: 100%;
+  margin: 15px;
+}
+
+.google-img {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
 }
