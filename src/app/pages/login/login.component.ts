@@ -18,12 +18,13 @@ export class LoginComponent {
   token: string | undefined
   password: string | undefined
   email: string | undefined
+
   constructor(private http: HttpClient, private cookieService: CookieService, private jwtTokenService: JWTTokenService, private userService: UserService, private router: Router, private oauthService: OAuthService, private activatedRoute: ActivatedRoute) {
     this.configure().then(() => {
       this.activatedRoute.fragment.subscribe(params => {
         if (params?.length) {
           let info = params?.split('&').map(x => x.split('='))
-          this.http.get(`https://185.26.53.195:5058/api/user/CheckEmail?email=${this.oauthService.getIdentityClaims()["email"]}`).subscribe(next => {
+          this.http.get(`http://localhost:5058/api/user/CheckEmail?email=${this.oauthService.getIdentityClaims()["email"]}`).subscribe(next => {
             this.cookieService.set('token', this.oauthService.getIdToken())
             this.jwtTokenService.setToken(this.oauthService.getIdToken())
             this.userService.loadInfo()
@@ -46,7 +47,7 @@ export class LoginComponent {
     const options = {
       responseType: 'text' as const,
     };
-    this.http.get(`https://185.26.53.195:5058/login?email=${this.email}&password=${this.password}`, options).subscribe(next => {
+    this.http.get(`http://localhost:5058/login?email=${this.email}&password=${this.password}`, options).subscribe(next => {
       this.token = next
       this.cookieService.set('token', this.token)
       this.jwtTokenService.setToken(this.token)
