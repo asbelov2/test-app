@@ -25,7 +25,7 @@ export class RegisterComponent {
         'Access-Control-Allow-Origin': '*',
       })
     };
-    this.http.post('https://localhost:5058/api/User/', this.user, httpOptions).subscribe((next) => {
+    this.http.post('https://185.26.53.195:5058/api/User/', this.user, httpOptions).subscribe((next) => {
       if ((next as User).email === this.user.email)
         this.router.navigateByUrl('/login')
     })
